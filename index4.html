@@ -130,6 +130,7 @@
             .container {
                 padding: 10px;
             }
+			
 		 
             h1, h2, h3 {
                 font-size: 2.2rem;
@@ -146,20 +147,26 @@
                 padding: 8px 15px;
             }
 			
+			
         }
-         .top-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #f0f0f0;
-            padding: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex; /* Flexbox kullan */
-            justify-content: center; /* Yatayda ortala */
-        }
+		@media (min-width: 768px) {
+    .top-menu {
+        justify-content: center; /* Masaüstü için ortalama */
+    }
+}
+        .top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f0f0f0;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    z-index: 1000;
+  }
         .top-menu button {
             background: #e0e0e0;
             border: none;
