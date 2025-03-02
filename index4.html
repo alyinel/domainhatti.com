@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Satış</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 100px 0 120px 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .card {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .for-sale {
+            background: #D32F2F;
+            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+        h2 {
+            font-size: 3rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+        h3 {
+            font-size: 3rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+        .price {
+            background: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            background-color: #eaeaea;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .contact {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            background: #f9f9f9;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .contact a:hover {
+            background: #eee;
+        }
+        .contact img {
+            width: 20px;
+            height: 20px;
+        }
+        .domain-history {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #eaeaea;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .domain-history img {
+            width: 16px;
+            height: 16px;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+            h3 {
+                font-size: 2rem;
+            }
+            h4 {
+                font-size: 2rem;
+            }
+            h5 {
+                font-size: 1.6rem;
+            }
+            .price {
+                font-size: 1.2rem;
+            }
+            .domain-history {
+                top: 20px;
+                right: 10px;
+                font-size: 0.6rem;
+                padding: 5px 8px;
+            }
+            .contact a {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+        .top-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+        .top-menu button {
+            background: #e0e0e0;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+        .top-menu button img {
+            height: 1em;
+            width: 1em;
+            margin-right: 5px;
+        }
+        .list-view-menu {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+        .list-view-menu button {
+            background: #e0e0e0;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        .list-view-menu button img {
+            height: 1em;
+            width: 1em;
+            margin-right: 5px;
+        }
+        .contact-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .contact-bottom a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            margin: 0 10px;
+            flex: 0 1 auto;
+            font-size: 1.1rem;
+        }
+        .contact-bottom a i {
+            margin-right: 10px;
+        }
+        @media (max-width: 600px) {
+            .contact-bottom a {
+                padding: 12px 18px;
+                font-size: 1rem;
+            }
+            .contact-bottom a i {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <button><img src="globe-solid.svg" alt="İkon 1"> Buton 1</button>
+        <button><img src="globe-solid.svg" alt="İkon 2"> Buton 2</button>
+        <button><img src="globe-solid.svg" alt="İkon 3"> Buton 3</button>
+        <button><img src="globe-solid.svg" alt="İkon 4"> Buton 4</button>
+        <button><img src="globe-solid.svg" alt="İkon 5"> Buton 5</button>
+    </div>
+    <div class="list-view-menu">
+        <button><img src="globe-solid.svg" alt="Normal İkon"> Normal Görünüm</button>
+        <button><img src="globe-solid.svg" alt="Liste İkon"> Liste Görünümü</button>
+    </div>
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>SaglikOfisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir. 
+                
+            
+        
+
+</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-bottom">
+        <a href="tel:+908504805553">
+            <i class="fas fa-phone"></i> Telefon
+        </a>
+        <a href="https://www.r10.net/profil/79498-kbilisim.html">
+            <i class="fas fa-globe"></i> R10.Net İletişim
+        </a>
+    </div>
+</body>
+</html>
