@@ -130,9 +130,7 @@
             .container {
                 padding: 10px;
             }
-			.top-menu {
-                padding: -165px 30px;
-            }
+		 
             h1, h2, h3 {
                 font-size: 2.2rem;
             }
@@ -149,7 +147,7 @@
             }
 			
         }
-        .top-menu {
+         .top-menu {
             position: fixed;
             top: 0;
             left: 0;
@@ -159,9 +157,8 @@
             overflow-x: auto;
             white-space: nowrap;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            z-index: 1000; /* Eklendi */
+            display: flex; /* Flexbox kullan */
+            justify-content: center; /* Yatayda ortala */
         }
         .top-menu button {
             background: #e0e0e0;
