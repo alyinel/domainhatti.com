@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Satış Listesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px 0 80px 0;
+            min-height: 100vh;
+            position: relative;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .domain-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .domain-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        .domain-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            flex: 1;
+            min-width: 150px;
+        }
+        .price, .for-sale {
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+            min-width: 70px;
+            margin-left: 5px; /* Masaüstü için boşluk */
+        }
+        .price {
+            background: #4CAF50;
+            color: #fff;
+        }
+        .for-sale {
+            background: #D32F2F;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            .domain-item {
+                flex-wrap: nowrap;
+                flex-direction: row;
+                gap: 10px;
+            }
+            .domain-name {
+                font-size: 1rem;
+                flex: 1;
+            }
+            .price, .for-sale {
+                font-size: 0.8rem;
+                padding: 3px 6px;
+                min-width: auto;
+                margin-left: 2px; /* Mobil için boşluk */
+            }
+        }
+        .contact {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            margin: 0 10px;
+            flex: 0 1 auto;
+            font-size: 1.1rem;
+        }
+        .contact a i {
+            margin-right: 10px;
+        }
+        @media (max-width: 600px) {
+            .contact a {
+                padding: 12px 18px;
+                font-size: 1rem;
+            }
+            .contact a i {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Satılık Domainler</h2>
+        <div class="domain-list">
+            <div class="domain-item">
+                <span class="domain-name">SaglikOfisi.com</span>
+                <span class="price">15.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+            <div class="domain-item">
+                <span class="domain-name">TaksiHatti.com</span>
+                <span class="price">10.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+            <div class="domain-item">
+                <span class="domain-name">TatilHizmeti.com</span>
+                <span class="price">25.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+            <div class="domain-item">
+                <span class="domain-name">KargoHizmeti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+        </div>
+    </div>
+    <div class="contact">
+        <a href="tel:+908504805553">
+            <i class="fas fa-phone"></i> Telefon
+        </a>
+        <a href="https://www.r10.net/profil/79498-kbilisim.html">
+            <i class="fas fa-globe"></i> R10.Net İletişim
+        </a>
+    </div>
+</body>
+</html>
