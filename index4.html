@@ -18,7 +18,7 @@
         }
         .container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 0px auto;
             padding: 20px;
             border-radius: 8px;
          }
@@ -69,6 +69,32 @@
             background-color: #eaeaea;
             padding: 15px;
             border-radius: 4px;
+        }
+		 .contact2 {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact2 a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            background: #f9f9f9;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .contact2 a:hover {
+            background: #eee;
+        }
+        .contact2 img {
+            width: 20px;
+            height: 20px;
         }
         .contact {
             margin-top: 30px;
@@ -176,6 +202,8 @@
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+			            font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+
         }
         .top-menu button img {
             height: 1em;
@@ -184,7 +212,7 @@
         }
         .list-view-menu {
             position: fixed;
-            top: 40px;
+            top: 45px;
             left: 0;
             width: 100%;
             background: #f0f0f0;
@@ -195,6 +223,8 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-top: 5px;
             z-index: 1000; /* Eklendi */
+			            font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+
         }
         .list-view-menu button {
             background: #e0e0e0;
@@ -203,9 +233,11 @@
             margin: 0 5px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             display: inline-flex;
             align-items: center;
+			            font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+
         }
         .list-view-menu button img {
             height: 1em;
@@ -232,12 +264,12 @@
                 <div class="for-sale">Satılık!</div>
                 <h1>SaglikOfisi.com</h1>
                 <div class="price">15.000₺</div>
-                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
-                </p>
+                <p class="description">Sağlasdsasdsadasdasdsdık hizmesaaaaaaaaaaaaaaaaassssssssssssssssssssstleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                 </p>
                 <div class="domain-history">
                     <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
                 </div>
-                <div class="contact">
+                <div class="contact2">
                     <a href="tel:+908504805553">
                         <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
                     </a>
@@ -255,7 +287,7 @@
                 <div class="domain-history">
                     <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
                 </div>
-                <div class="contact">
+                <div class="contact2">
                     <a href="tel:+908504805553">
                         <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
                     </a>

@@ -79,17 +79,25 @@
                 margin-left: 2px;
             }
         }
+        	@media (min-width: 768px) {
+    .top-menu {
+        justify-content: center; /* Masaüstü için ortalama */
+    }
+}
         .top-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #f0f0f0;
-            padding: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f0f0f0;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+     display: flex;
+    z-index: 1000;
+	            font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+
+  }
         .top-menu button {
             background: #e0e0e0;
             border: none;
@@ -99,6 +107,8 @@
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+			            font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+
         }
         .top-menu button img {
             height: 1em;
@@ -107,7 +117,7 @@
         }
         .list-view-menu {
             position: fixed;
-            top: 40px;
+            top: 45px;
             left: 0;
             width: 100%;
             background: #f0f0f0;
@@ -125,9 +135,11 @@
             margin: 0 5px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             display: inline-flex;
             align-items: center;
+			            font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+
         }
         .list-view-menu button img {
             height: 1em;
@@ -170,6 +182,7 @@
             .contact a i {
                 font-size: 1.1rem;
             }
+			
         }
     </style>
 </head>
