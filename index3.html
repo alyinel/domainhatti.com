@@ -12,7 +12,7 @@
             background-color: #f4f4f9;
             color: #333;
             margin: 0;
-            padding: 20px 0 80px 0;
+            padding: 100px 0 120px 0; /* Menüler için boşluk */
             min-height: 100vh;
             position: relative;
         }
@@ -52,7 +52,7 @@
             font-weight: 700;
             text-align: center;
             min-width: 70px;
-            margin-left: 5px; /* Masaüstü için boşluk */
+            margin-left: 5px;
         }
         .price {
             background: #4CAF50;
@@ -76,8 +76,62 @@
                 font-size: 0.8rem;
                 padding: 3px 6px;
                 min-width: auto;
-                margin-left: 2px; /* Mobil için boşluk */
+                margin-left: 2px;
             }
+        }
+        .top-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .top-menu button {
+            background: #e0e0e0;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex; /* Icon ve yazıyı aynı satırda tutar */
+            align-items: center; /* Dikey hizalama */
+        }
+        .top-menu button img {
+            height: 1em; /* Yazı boyutu ile aynı yükseklik */
+            width: 1em; /* Yazı boyutu ile aynı genişlik */
+            margin-right: 5px; /* Icon ve yazı arasında boşluk */
+        }
+        .list-view-menu {
+            position: fixed;
+            top: 40px; /* Üst menüden sonra */
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .list-view-menu button {
+            background: #e0e0e0;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex; /* Icon ve yazıyı aynı satırda tutar */
+            align-items: center; /* Dikey hizalama */
+        }
+        .list-view-menu button img {
+            height: 1em; /* Yazı boyutu ile aynı yükseklik */
+            width: 1em; /* Yazı boyutu ile aynı genişlik */
+            margin-right: 5px; /* Icon ve yazı arasında boşluk */
         }
         .contact {
             position: fixed;
@@ -119,6 +173,18 @@
     </style>
 </head>
 <body>
+    <div class="top-menu">
+        <button><img src="globe-solid.svg" alt="İkon 1"> Buton 1</button>
+        <button><img src="globe-solid.svg" alt="İkon 2"> Buton 2</button>
+        <button><img src="globe-solid.svg" alt="İkon 3"> Buton 3</button>
+        <button><img src="globe-solid.svg" alt="İkon 4"> Buton 4</button>
+        <button><img src="globe-solid.svg" alt="İkon 5"> Buton 5</button>
+    </div>
+    <div class="list-view-menu">
+        <button><img src="globe-solid.svg" alt="Normal İkon"> Normal Görünüm</button>
+        <button><img src="globe-solid.svg" alt="Liste İkon"> Liste Görünümü</button>
+    </div>
+ </div>
     <div class="container">
         <h2>Satılık Domainler</h2>
         <div class="domain-list">
@@ -138,62 +204,6 @@
                 <span class="for-sale">Satılık</span>
             </div>
             <div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div>
-			<div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div>
-			<div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div>
-			<div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div>
-			<div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div>
-			<div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div>
-			<div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div>
-			<div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div>
-			<div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div><div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div><div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div><div class="domain-item">
-                <span class="domain-name">KargoHizmeti.com</span>
-                <span class="price">20.000₺</span>
-                <span class="for-sale">Satılık</span>
-            </div><div class="domain-item">
                 <span class="domain-name">KargoHizmeti.com</span>
                 <span class="price">20.000₺</span>
                 <span class="for-sale">Satılık</span>
