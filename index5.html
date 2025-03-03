@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Satış Listesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* (Önceki CSS kodları) */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 100px 0 120px 0;
+            min-height: 100vh;
+            position: relative;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .card {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .for-sale {
+            background: #D32F2F;
+            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+		   h3 {
+            font-size: 1rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+		   h2 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+        .price {
+            background: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            background-color: #eaeaea;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .card-contact { /* Yeni sınıf adı */
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card-contact a { /* Yeni sınıf adı */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            background: #f9f9f9;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .card-contact a:hover { /* Yeni sınıf adı */
+            background: #eee;
+        }
+        .card-contact img { /* Yeni sınıf adı */
+            width: 20px;
+            height: 20px;
+        }
+        .domain-history {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #eaeaea;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .domain-history img {
+            width: 16px;
+            height: 16px;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+			h2 {
+                font-size: 1.8rem;
+            }
+			h3 {
+                font-size: 1.5rem;
+            }
+            .price {
+                font-size: 1.2rem;
+            }
+            .domain-history {
+                font-size: 0.6rem;
+                padding: 5px 8px;
+            }
+            .card-contact a {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+        @media (min-width: 768px) {
+            .top-menu {
+                justify-content: center;
+            }
+        }
+        .top-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            z-index: 1000;
+        }
+        .top-menu button {
+            background: #e0e0e0;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .top-menu button img {
+            height: 1em;
+            width: 1em;
+            margin-right: 5px;
+        }
+        .list-view-menu {
+            position: fixed;
+            top: 45px;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            z-index: 1000;
+            font-family: 'Poppins', sans-serif;
+        }
+        .list-view-menu button {
+            background: #e0e0e0;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .list-view-menu button img {
+            height: 1em;
+            width: 1em;
+            margin-right: 5px;
+        }
+        .contact {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+			 padding: 10px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .contact a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            background: #f9f9f9;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .contact a:hover {
+            background: #eee;
+        }
+        .contact img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <button><img src="globe-solid.svg" alt="İkon 1"> Buton 1</button>
+        <button><img src="globe-solid.svg" alt="İkon 2"> Buton 2</button>
+        <button><img src="globe-solid.svg" alt="İkon 3"> Buton 3</button>
+        <button><img src="globe-solid.svg" alt="İkon 4"> Buton 4</button>
+        <button><img src="globe-solid.svg" alt="İkon 5"> Buton 5</button>
+    </div>
+    <div class="list-view-menu">
+        <button><img src="globe-solid.svg" alt="Normal İkon"> Detaylı Görünüm</button>
+        <button><img src="globe-solid.svg" alt="Liste İkon"> Hızlı Görünümü</button>
+    </div>
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>BilgiHatti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>BilgiHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>BilgiDestek.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>BilgiCenter.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>KargoServisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>KargoHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TaksiServisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>LojistikOfisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>KargoOfisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>Nakliyehatti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TaksiHatti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>NakliyeServisi.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>KiralamaServisi.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>TadilatHizmeti.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>HaliYikamaHizmeti.com</h3>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>RentaCarHizmeti.com</h3>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>SacEkimHizmeti.com</h3>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>YedekParcaHizmeti.com</h3>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>PetShopHizmeti.com</h3>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>KombiHizmeti.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>EgitimHizmeti.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>VipHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>OyunHizmeti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>MotosikletServisi.com</h3>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>AmbulansServisi.com</h3>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            <div class="card">
+            </div>
+                <div class="for-sale">Satılık!</div>
+                <h2>DogalgazServisi.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>TadilatServisi.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>FinansServisi.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>EgitimServisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>TurHizmetleri.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>FutbolServisi.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>LojistikServisi.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>PastaneServisi.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>YemekOfisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>CicekOfisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>SaglikOfisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>OyunOfisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>ServisOfisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>AcilHatti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TelefonHatti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>internetHatti.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TicaretHatti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>YatirimHatti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>DomainHatti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>DoktorHatti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>PizzaServisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>PastaServisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>LEDServisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>SmsServisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>BayiServisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>BorsaServisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>YatirimServisi.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>KriptoServisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>BoyaServisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>TurGeziRehberi.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TatilHizmeti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>OtelHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TatilServisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TurServisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>SeyahatServisi.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>TurizmServisi.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>OtelServisi.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>SeyahatOfisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>Seyahathizmeti.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TurHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>TurizmHizmeti.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TurizmHatti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>Gezihizmeti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>GeziServisi.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Taksi sektöründe hizmet verenlere uygun bir alan adıdır. <br><br>Taksi çağırma platformu, Taksi tanıtımı, Taksi durak tanıtımı, Taksi mobil uygulaması, Taksi şoförleri için iletişim ağı, Taksi filosu, Taksi reklamları gibi alanlarda kullanılabilir.<br>
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>UzmanRehber.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Sağlık hizmetleri sektöründe faaliyet gösterenler için mükemmel bir alan adıdır. <br><br>Klinik veya benzeri bir işletmeler için çözüm sunmaktadır. Ayrıca Sağlık alanında blog ve rehber sitesi olarakta kullanılabilir.
+                </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="tel:+908504805553">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+             
+			
+        </div>
+    </div>
+    <div class="contact">
+        <a href="tel:+908504805553">
+            <i class="fas fa-phone"></i> Telefon
+        </a>
+        <a href="https://www.r10.net/profil/79498-kbilisim.html">
+            <i class="fas fa-globe"></i> R10.Net İletişim
+        </a>
+    </div>
+</body>
+</html>
