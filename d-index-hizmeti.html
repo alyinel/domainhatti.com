@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Satış Listesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* (Önceki CSS kodları) */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 100px 0 120px 0;
+            min-height: 100vh;
+            position: relative;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .card {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .for-sale {
+            background: #D32F2F;
+            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+		   h3 {
+            font-size: 2.4rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+		   h2 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #333;
+        }
+        .price {
+            background: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            background-color: #eaeaea;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .card-contact { /* Yeni sınıf adı */
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card-contact a { /* Yeni sınıf adı */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            background: #f9f9f9;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .card-contact a:hover { /* Yeni sınıf adı */
+            background: #eee;
+        }
+        .card-contact img { /* Yeni sınıf adı */
+            width: 20px;
+            height: 20px;
+        }
+        .domain-history {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #eaeaea;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .domain-history img {
+            width: 16px;
+            height: 16px;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+			h2 {
+                font-size: 1.8rem;
+            }
+			h3 {
+                font-size: 1.5rem;
+            }
+            .price {
+                font-size: 1.2rem;
+            }
+            .domain-history {
+                font-size: 0.6rem;
+                padding: 5px 8px;
+            }
+            .card-contact a {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+        @media (min-width: 768px) {
+            .top-menu {
+                justify-content: center;
+            }
+        }
+        .top-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #eaeaea;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            z-index: 1000;
+        }
+				 
+        .top-menu button {
+            background: #fff;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+			font-weight: bold;
+        }
+		.top-menu button:link {
+  color: #333;
+}
+
+.top-menu button:visited {
+  color: #333;
+}
+
+.top-menu button:hover {
+  color: #ff0000;
+}
+
+.top-menu button:active {
+  color: #999;
+}
+		.top-menu :link {
+  color: #333;
+}
+
+.top-menu :visited {
+  color: #333;
+}
+
+.top-menu :hover {
+  color: #ff0000;
+}
+
+.top-menu :active {
+  color: #999;
+}
+        .top-menu button img {
+            height: 1em;
+            width: 1em;
+            margin-right: 5px;
+        }
+        .list-view-menu {
+            position: fixed;
+            top: 45px;
+            left: 0;
+            width: 100%;
+            background: #eaeaea;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            z-index: 1000;
+            font-family: 'Poppins', sans-serif;
+			
+        }
+        .list-view-menu button {
+            background: #fff;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+			font-weight: bold;
+
+        }
+		.list-view-menu a:link {
+    color: #333;
+}
+
+.list-view-menu a:visited {
+    color: #333;
+}
+
+.list-view-menu a:hover {
+    color: #ff0000;
+}
+
+.list-view-menu a:active {
+    color: #999;
+}
+        .list-view-menu button img {
+            height: 1em;
+            width: 1em;
+            margin-right: 5px;
+        }
+        .contact {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #eaeaea;
+			 padding: 10px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+		.contact a:link {
+    color: #333;
+}
+
+.contact a:visited {
+    color: #333;
+}
+
+.contact a:hover {
+    color: #4CAF50; /* Üzerine gelindiğinde farklı renk */
+}
+
+.contact a:active {
+    color: #999; /* Tıklanıldığında farklı renk */
+}
+        .contact a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            background: #f9f9f9;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+			   font-weight: bold;
+    
+        }
+        .contact a:hover {
+            background: #eee;
+        }
+        .contact img {
+            width: 20px;
+            height: 20px;
+        }
+			@media (max-width: 600px) {
+    .contact {
+        padding-left: 5px !important;
+        padding-right: 10px !important;
+    }
+	@media (max-width: 600px) {
+    .contact a {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+	
+}
+    </style>
+</head>
+<body>
+           <div class="top-menu">
+        <button> <a href="d-index-turizm.html" style="text-decoration: none;"  ><img src="plane-alt.svg" alt="İkon 1"> Turizm</button></a>
+        <button><a href="d-index-sektorel.html" style="text-decoration: none;"  ><img src="shopping-bag.svg" alt="İkon 2"> Sektörel Domainler</button></a>
+        <button><a href="d-index-tasimacilik.html" style="text-decoration: none;"  ><img src="truck-side.svg" alt="İkon 3"> Taşımacılık</button></a>
+        <button><a href="d-index-servisi.html" style="text-decoration: none;"  ><img src="globe-solid.svg" alt="İkon 5"> Servisi Kelimesinden</button></a>
+		<button><a href="d-index-hizmeti.html" style="text-decoration: none;"  ><img src="globe-solid.svg" alt="İkon 5"> Hizmeti Kelimesinden</button></a>
+		<button><a href="d-index-hatti.html" style="text-decoration: none;"  ><img src="globe-solid.svg" alt="İkon 5"> Hatti Kelimesinden</button></a>
+		<button><a href="d-index-ofisi.html" style="text-decoration: none;"  ><img src="globe-solid.svg" alt="İkon 5"> Ofisi Kelimesinden</button></a>
+
+    </div>
+    <div class="list-view-menu">
+        <button><a href="d-index.html" style="text-decoration: none;"  ><img src="detayli.svg" alt="Normal İkon"> Detaylı Görünüm</button></a>
+        <button><a href="h-index.html" style="text-decoration: none;"  ><img src="list-check.svg" alt="Liste İkon"> Hızlı Görünüm</button></a>
+    </div>
+    <div class="container">
+        <div class="grid">
+    <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>BilgiHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Bilgi, danışmanlık veya blog sektöründe hizmet verenler için ideal bir alan adıdır.
+
+Eğitim ve öğretim kaynakları, müşteri destek hizmetleri, bilgi paylaşımı platformları, rehberlik ve danışmanlık hizmetleri gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>KargoHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Kargo ve taşımacılık sektöründe hizmet verenler için mükemmel bir alan adıdır.
+                <p class="description">Taksi hizmetleri için profesyonel bir alan adıdır.
+ <br><br>
+Yurtiçi ve uluslararası kargo taşımacılığı, ekspres kurye hizmetleri, e-ticaret lojistiği ve kargo takip sistemleri gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>TadilatHizmeti.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description">Tadilat ve dekorasyon sektöründe hizmet verenler için ideal bir alan adıdır.
+<br><br>
+Ev, ofis ve iş yeri tadilatı, iç ve dış dekorasyon, boya-badana, tesisat yenileme ve anahtar teslim tadilat projeleri gibi alanlarda kullanılabilir.  </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>HaliYikamaHizmeti.com</h3>
+                <div class="price">15.000₺</div>
+                <p class="description">Halı yıkama sektöründe faaliyet gösterenler için mükemmel bir alan adıdır.
+<br><br>
+Profesyonel halı yıkama, koltuk yıkama, stor perde temizliği, yorgan ve battaniye yıkama gibi hizmetler için kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>RentaCarHizmeti.com</h3>
+                <div class="price">10.000₺</div>
+                <p class="description"> Araç kiralama sektöründe hizmet verenler için ideal bir alan adıdır.
+<br><br>
+Günlük ve uzun dönem araç kiralama, VIP transfer hizmetleri, filo kiralama ve lüks araç kiralama gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>SacEkimHizmeti.com</h3>
+                <div class="price">15.000₺</div>
+                <p class="description"Saç ekimi ve medikal estetik sektöründe hizmet verenler için mükemmel bir alan adıdır.
+<br><br>
+Saç ekim merkezleri, saç ekimi danışmanlık hizmetleri, PRP ve saç bakımı uygulamaları gibi alanlarda kullanılabilir. </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>YedekParcaHizmeti.com</h3>
+                <div class="price">10.000₺</div>
+                <p class="description"> Otomotiv ve makine sektöründe yedek parça satışı yapanlar için ideal bir alan adıdır.
+<br><br>
+Araç yedek parçaları, sanayi makineleri yedek parçaları, orijinal ve yan sanayi ürün satışı, online yedek parça mağazası gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h3>PetShopHizmeti.com</h3>
+                <div class="price">15.000₺</div>
+                <p class="description">Evcil hayvan sektöründe hizmet verenler için ideal bir alan adıdır.
+<br><br>
+Pet shop mağazaları, online evcil hayvan ürünleri satışı, mama ve aksesuar satışı, veteriner hizmetleri ve pet kuaför gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>KombiHizmeti.com</h2>
+                <div class="price">10.000₺</div>
+                <p class="description"> Isıtma ve iklimlendirme sektöründe hizmet verenler için ideal bir alan adıdır.
+<br><br>
+Kombi satışı, montajı, bakımı, tamiri, yedek parça temini ve teknik servis hizmetleri gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>EgitimHizmeti.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Eğitim sektöründe faaliyet gösterenler için mükemmel bir alan adıdır.
+<br><br>
+Online ve yüz yüze eğitimler, özel dersler, kurs merkezleri, sertifika programları ve kurumsal eğitim hizmetleri gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>VipHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description">Özel ve lüks hizmetler sunan işletmeler için mükemmel bir alan adıdır.
+<br><br>
+VIP transfer, özel şoförlü araç kiralama, lüks turizm hizmetleri, concierge hizmetleri ve kişiye özel danışmanlık gibi alanlarda kullanılabilir. </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>OyunHizmeti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Oyun sektörüyle ilgili hizmetler sunanlar için ideal bir alan adıdır.
+<br><br>
+Online oyun platformları, oyun içi destek hizmetleri, oyun geliştirme, e-spor organizasyonları ve oyun danışmanlık hizmetleri gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TatilHizmeti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Turizm ve konaklama sektöründe hizmet verenler için ideal bir alan adıdır.
+
+Otel rezervasyonları, tatil paketleri, tur organizasyonları, villa kiralama, kamp ve karavan tatilleri gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>OtelHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Konaklama sektörüyle ilgili hizmetler sunanlar için mükemmel bir alan adıdır.
+
+Otel rezervasyonları, müşteri hizmetleri, VIP konaklama, etkinlik organizasyonları, tatil paketleri ve otel yönetimi hizmetleri gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 
+        
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>Seyahathizmeti.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Seyahat sektörüyle ilgili hizmetler sunanlar için ideal bir alan adıdır.
+
+Tatil paketleri, otel ve uçak bileti rezervasyonları, rehberli turlar, araç kiralama ve seyahat sigortası gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>TurHizmeti.com</h1>
+                <div class="price">10.000₺</div>
+                <p class="description"> Turizm sektöründe hizmet verenler için mükemmel bir alan adıdır.
+
+Yurt içi ve yurt dışı turlar, kültürel geziler, rehberli turlar, grup seyahatleri ve özel tur planlamaları gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h2>TurizmHizmeti.com</h2>
+                <div class="price">15.000₺</div>
+                <p class="description">Turizm sektöründe hizmet verenler için ideal bir alan adıdır.
+
+Tatil paketleri, rehberli turlar, seyahat organizasyonları, otel rezervasyonları, grup turları ve kişiye özel tatil planları gibi alanlarda kullanılabilir. </p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+			 <div class="card">
+                <div class="for-sale">Satılık!</div>
+                <h1>Gezihizmeti.com</h1>
+                <div class="price">15.000₺</div>
+                <p class="description">Turizm ve seyahat sektöründe hizmet verenler için ideal bir alan adıdır.
+
+Yurt içi ve yurt dışı geziler, kültürel ve doğa turları, günlük geziler, rehberli turlar ve özel seyahat planlaması gibi alanlarda kullanılabilir.</p>
+                <div class="domain-history">
+                    <img src="calendar-days-solid.svg" alt="Geçmiş"> Domain Geçmişi: 13.01.2006 - 2025
+                </div>
+                <div class="card-contact">
+                    <a href="https://wa.me/+908502417465">
+                        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp"> WhatsApp
+                    </a>
+                    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+                        <img src="globe-solid.svg" alt="Email"> R10.Net İletişim
+                    </a>
+                </div>
+            </div>
+             
+			
+        </div>
+    </div>
+<div class="contact">
+    <a href="https://wa.me/+908502417465">
+        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp İkonu"> WhatsApp
+    </a>
+    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+        <img src="globe-solid.svg" alt="R10.Net İkonu"> R10.Net İletişim
+    </a>
+    </div>
+</body>
+</html>

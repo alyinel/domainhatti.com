@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Satış Listesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 100px 0 120px 0; /* Menüler için boşluk */
+            min-height: 100vh;
+            position: relative;
+			text-decoration:none
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .domain-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .domain-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        .domain-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            flex: 1;
+            min-width: 150px;
+        }
+        .price, .for-sale {
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+            min-width: 70px;
+            margin-left: 5px;
+        }
+        .price {
+            background: #4CAF50;
+            color: #fff;
+        }
+        .for-sale {
+            background: #D32F2F;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            .domain-item {
+                flex-wrap: nowrap;
+                flex-direction: row;
+                gap: 10px;
+            }
+            .domain-name {
+                font-size: 1rem;
+                flex: 1;
+            }
+            .price, .for-sale {
+                font-size: 0.8rem;
+                padding: 3px 6px;
+                min-width: auto;
+                margin-left: 2px;
+            }
+        }
+        	@media (min-width: 768px) {
+    .top-menu {
+        justify-content: center; /* Masaüstü için ortalama */
+    }
+}
+        .top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #eaeaea;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+     display: flex;
+    z-index: 1000;
+	            font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+				
+
+  }
+        .top-menu button {
+            background: #fff;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+			font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+font-weight: bold;
+        }
+		.top-menu :link {
+  color: #333;
+}
+
+.top-menu :visited {
+  color: #333;
+}
+
+.top-menu :hover {
+  color: #ff0000;
+}
+
+.top-menu :active {
+  color: #999;
+}
+        .top-menu button img {
+            height: 1em;
+            width: 1em;
+            margin-right: 5px;
+        }
+        .list-view-menu {
+            position: fixed;
+            top: 45px;
+            left: 0;
+            width: 100%;
+            background: #eaeaea;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+			
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 5px; /* Üst menü ile liste görünümü arasına küçük boşluk */
+        }
+		.list-view-menu a:link {
+    color: #333;
+}
+
+.list-view-menu a:visited {
+    color: #333;
+}
+
+.list-view-menu a:hover {
+    color: #ff0000;
+}
+
+.list-view-menu a:active {
+    color: #999;
+}
+        .list-view-menu button {
+            background: #fff;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+			font-weight: bold;
+			font-family: 'Poppins', sans-serif; /* İletişim bölümü için font */
+
+        }
+        .list-view-menu button img {
+            height: 1em;
+            width: 1em;
+            margin-right: 5px;
+        }
+       .contact {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f0f0f0;
+			 padding: 10px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .contact a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+            background: #f9f9f9;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+			font-weight: bold;
+			    
+        }
+		
+		.contact a:link {
+    color: #333;
+}
+
+.contact a:visited {
+    color: #333;
+}
+
+.contact a:hover {
+    color: #4CAF50; /* Üzerine gelindiğinde farklı renk */
+}
+
+.contact a:active {
+    color: #999; /* Tıklanıldığında farklı renk */
+}
+        .contact a:hover {
+            background: #eee;
+        }
+        .contact img {
+            width: 20px;
+            height: 20px;
+        }
+		@media (max-width: 600px) {
+    .contact {
+        padding-left: 5px !important;
+        padding-right: 10px !important;
+    }
+	@media (max-width: 600px) {
+    .contact a {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+			
+    </style> 
+</head>
+<body>
+       <div class="top-menu">
+        <button> <a href="h-index-turizm.html" style="text-decoration: none;"  ><img src="plane-alt.svg" alt="İkon 1"> Turizm</button></a>
+        <button><a href="h-index-sektorel.html" style="text-decoration: none;"  ><img src="shopping-bag.svg" alt="İkon 2"> Sektörel Domainler</button></a>
+        <button><a href="h-index-tasimacilik.html" style="text-decoration: none;"  ><img src="truck-side.svg" alt="İkon 3"> Taşımacılık</button></a>
+        <button><a href="h-index-servisi.html" style="text-decoration: none;"  ><img src="globe-solid.svg" alt="İkon 5"> Servisi Kelimesinden</button></a>
+		<button><a href="h-index-hizmeti.html" style="text-decoration: none;"  ><img src="globe-solid.svg" alt="İkon 5"> Hizmeti Kelimesinden</button></a>
+		<button><a href="h-index-hatti.html" style="text-decoration: none;"  ><img src="globe-solid.svg" alt="İkon 5"> Hatti Kelimesinden</button></a>
+		<button><a href="h-index-ofisi.html" style="text-decoration: none;"  ><img src="globe-solid.svg" alt="İkon 5"> Ofisi Kelimesinden</button></a>
+
+    </div>
+   <div class="list-view-menu">
+        <button><a href="d-index.html" style="text-decoration: none;"  ><img src="detayli.svg" alt="Normal İkon"> Detaylı Görünüm</button></a>
+        <button><a href="h-index.html" style="text-decoration: none;"  ><img src="list-check.svg" alt="Liste İkon"> Hızlı Görünüm</button></a>
+    </div>
+    <div class="container">
+        <h2>Satılık Domainler</h2>
+        <div class="domain-list">
+           
+			    <div class="domain-item">
+                <span class="domain-name">BilgiHatti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>    <div class="domain-item">
+                <span class="domain-name">AcilHatti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+			 <div class="domain-item">
+                <span class="domain-name">TelefonHatti.com</span>
+                <span class="price">15.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+            <div class="domain-item">
+                <span class="domain-name">internetHatti.com</span>
+                <span class="price">10.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+            <div class="domain-item">
+                <span class="domain-name">TicaretHatti.com</span>
+                <span class="price">25.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+            <div class="domain-item">
+                <span class="domain-name">YatirimHatti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+			    <div class="domain-item">
+                <span class="domain-name">DomainHatti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+			    <div class="domain-item">
+                <span class="domain-name">DoktorHatti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+			 			    <div class="domain-item">
+                <span class="domain-name">Nakliyehatti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+			    <div class="domain-item">
+                <span class="domain-name">TaksiHatti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+			    <div class="domain-item">
+                <span class="domain-name">TurizmHatti.com</span>
+                <span class="price">20.000₺</span>
+                <span class="for-sale">Satılık</span>
+            </div>
+			  
+        </div>
+    </div>
+<div class="contact">
+    <a href="tel:+908504805553">
+        <img src="square-whatsapp-brands-solid.svg" alt="WhatsApp İkonu"> WhatsApp
+    </a>
+    <a href="https://www.r10.net/profil/79498-kbilisim.html">
+        <img src="globe-solid.svg" alt="R10.Net İkonu"> R10.Net İletişim
+    </a>
+</div>
+</body>
+</body>
+</html>
